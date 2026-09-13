@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "author": "Smart Warehouse Fixed Pin",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 120, "left": 100, "attrs": {} },
+    { "type": "wokwi-dht11", "id": "dht", "top": -80, "left": 270, "attrs": { "temperature": "28", "humidity": "60" } },
+    { "type": "wokwi-photoresistor-sensor", "id": "ldr", "top": -70, "left": 40, "attrs": {} },
+    { "type": "wokwi-relay-module", "id": "relay", "top": 320, "left": 60, "attrs": {} },
+    { "type": "wokwi-led", "id": "led", "top": 120, "left": 370, "attrs": { "color": "red" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": 190, "left": 350, "attrs": { "value": "220" } }
+  ],
+  "connections": [
+    [ "esp:3V3", "dht:VCC", "red", [ "v-20", "h130" ] ],
+    [ "esp:GND.1", "dht:GND", "black", [ "v-30", "h130" ] ],
+    [ "esp:D13", "dht:SDA", "green", [ "v-50", "h80" ] ],
+
+    [ "esp:3V3", "ldr:VCC", "red", [ "v-20", "h-60" ] ],
+    [ "esp:GND.1", "ldr:GND", "black", [ "v-30", "h-60" ] ],
+    [ "esp:D34", "ldr:AO", "blue", [ "v-40", "h-50" ] ],
+
+    [ "esp:VIN", "relay:VCC", "red", [ "v40", "h-30" ] ],
+    [ "esp:GND.2", "relay:GND", "black", [ "v50", "h-30" ] ],
+    [ "esp:D12", "relay:IN", "orange", [ "v30", "h-40" ] ],
+
+    [ "esp:D5", "led:A", "gold", [ "h30", "v0" ] ],
+    [ "led:C", "r1:1", "black", [ "v0" ] ],
+    [ "r1:2", "esp:GND.1", "black", [ "v30", "h-170" ] ],
+
+    [ "esp:TX0", "$serialMonitor:RX", "white", [] ]
+  ],
+  "dependencies": {}
+}

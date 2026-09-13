@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "author": "Latihan 4 ESP32",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 100, "left": 100, "attrs": {} },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr",
+      "top": 118.4,
+      "left": -152.8,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led",
+      "top": 124,
+      "left": 308.6,
+      "rotate": 270,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 206.4,
+      "left": 249.05,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "esp:3V3", "ldr:VCC", "red", [ "v-20", "h-40" ] ],
+    [ "esp:GND.1", "ldr:GND", "black", [ "h-37.41", "v-30", "h-28.8", "v-79.2" ] ],
+    [ "esp:34", "ldr:AO", "blue", [ "v-4", "h-104.61" ] ],
+    [ "esp:5", "led:A", "gold", [ "h30", "v0" ] ],
+    [ "led:C", "r1:1", "black", [ "v0" ] ],
+    [ "r1:2", "esp:GND.1", "black", [ "v94.8", "h-252.4", "v-82.4" ] ]
+  ],
+  "dependencies": {}
+}
